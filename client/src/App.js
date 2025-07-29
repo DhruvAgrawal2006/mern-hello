@@ -1,18 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 function App() {
-  const [backendMsg, setBackendMsg] = useState("");
+  const [backendStatus, setBackendStatus] = useState(null);
 
   useEffect(() => {
-    fetch("https://your-backend.onrender.com/api/hello")
-      .then(res => res.json())
-      .then(data => setBackendMsg(data.message));
+    fetch(`https://mern-hello-lmvx.onrender.com`) // or your backend URL
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => {
+        if (data.message === "backend is working") {
+          setBackendStatus("backend is working");
+        } else {
+          setBackendStatus("backend responded but unexpected message");
+        }
+      })
+      .catch(() => {
+        setBackendStatus("could not connect to backend");
+      });
   }, []);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Hello from Frontend</h1>
-      <h2>{backendMsg}</h2>
+    <div>
+      <h1>frontend is working</h1>
+      {backendStatus && <h2>{backendStatus}</h2>}
     </div>
   );
 }

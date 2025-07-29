@@ -7,7 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: 'https://your-frontend.netlify.app'  // Allow only your Netlify domain
+  origin: 'https://your-frontend.netlify.app',  // Allow only your Netlify domain
+  credentials: true
 }));
 app.use(express.json());
 
