@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: 'https://your-frontend.netlify.app',  // Allow only your Netlify domain
+  origin: [
+    'http://localhost:5173',
+    'https://mern-hello-9gavs7jcc-dhruv-agrawals-projects-b7f11725.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -21,6 +24,10 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.get('/api/hello', (req, res) => {
   res.json({ message: "Hello from backend!" });
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({ message: "backend is working" });
 });
 
 app.listen(PORT, () => {
