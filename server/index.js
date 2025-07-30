@@ -22,6 +22,11 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error(err));
 
+// Add root route
+app.get('/', (req, res) => {
+  res.json({ message: "the backend is working" });
+});
+
 app.get('/api/hello', (req, res) => {
   res.json({ message: "Hello from backend!" });
 });
