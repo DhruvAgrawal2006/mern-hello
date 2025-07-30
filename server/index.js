@@ -10,6 +10,7 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'https://mern-hello-qf35okgvc-dhruv-agrawals-projects-b7f11725.vercel.app/'
+    'https://mern-hello-9gavs7jcc-dhruv-agrawals-projects-b7f11725.vercel.app'
   ],
   credentials: true
 }));
