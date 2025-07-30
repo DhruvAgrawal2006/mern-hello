@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Add root route
 app.get('/', (req, res) => {
-  res.json({ message: "the backend is working" });
+  res.json({ message: "backend is working" });
 });
 
 app.get('/api/hello', (req, res) => {
